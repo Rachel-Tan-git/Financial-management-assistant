@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FMA</string>
+    <string name="Welcome_String">Welcome to the registration screen</string>
+    <string name="use_name">Username:</string>
+    <string name="Enter1">Please enter your username</string>
+    <string name="password">Password:</string>
+    <string name="Enter2">Please enter your password</string>
+    <string name="age">Age:</string>
+    <string name="Enter3">Please enter your age</string>
+    <string name="welcome_string2">Welcome to the login screen</string>
+</resources>
