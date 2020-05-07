@@ -19,8 +19,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 //Create a table for store the user information
     public void onCreate(SQLiteDatabase db) {
-        String sql="create table user(id integer primary key autoincrement,username varchar(20),password varchar(20),age integer,sex varchar(2))";
-        db.execSQL(sql);
+        String sqlUser = "create table user(id integer primary key autoincrement,username varchar(20),password varchar(20),age integer,sex varchar(2))";
+        db.execSQL(sqlUser);
+        String sqlUserBill = "create table userBill(id integer primary key autoincrement,username varchar(20),billType varchar(20),type varchar(20),name varchar(20),number double,billDate date)";
+        db.execSQL(sqlUserBill);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);

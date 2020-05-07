@@ -120,13 +120,13 @@
         app:layout_constraintVertical_bias="0.647">
 
         <RadioButton
-            android:id="@+id/man"
+            android:id="@+id/nan"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Male" />
 
         <RadioButton
-            android:id="@+id/woman"
+            android:id="@id/woman"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Female" />

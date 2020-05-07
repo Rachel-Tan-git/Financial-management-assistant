@@ -14,11 +14,11 @@ import android.widget.Toast;
 import com.example.fma.Service.UserService;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText username;
-    EditText password;
-    EditText age;
-    RadioGroup sex;
-    Button register;
+    private EditText username;
+    private EditText password;
+    private EditText age;
+    private RadioGroup sex;
+    private Button register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

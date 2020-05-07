@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.IBinder;
 
 import com.example.fma.User;
-
+import com.example.fma.userBill;
 
 public class UserService{
     private DatabaseHelper dbHelper;
@@ -17,11 +17,11 @@ public class UserService{
     }
 
     public boolean login(String username,String password){
-        SQLiteDatabase sdb=dbHelper.getReadableDatabase();
+        SQLiteDatabase sdb = dbHelper.getReadableDatabase();
         //Select username and password from the table
-        String sql="select * from user where username=? and password=?";
+        String sql = "select * from user where username=? and password=?";
         //Use cursor to check whether the user's entered username and password are in the database
-        Cursor cursor=sdb.rawQuery(sql, new String[]{username,password});
+        Cursor cursor = sdb.rawQuery(sql, new String[]{username,password});
         if(cursor.moveToFirst()){
             cursor.close();
             return true;
@@ -30,11 +30,21 @@ public class UserService{
     }
     //Store user data in a database(table user)
     public boolean register(User user){
-        SQLiteDatabase sdb=dbHelper.getReadableDatabase();
-        String sql="insert into user(username,password,age,sex) values(?,?,?,?)";
+        SQLiteDatabase sdb = dbHelper.getReadableDatabase();
+        String sql = "insert into user(username,password,age,sex) values(?,?,?,?)";
         Object obj[]={user.getUsername(),user.getPassword(),user.getAge(),user.getSex()};
         sdb.execSQL(sql, obj);
         return true;
     }
+
+    public boolean addRecord(userBill userbill){
+        SQLiteDatabase sdb = dbHelper.getReadableDatabase();
+        String sql="insert into user(username,billType,type,name,number,date) values(?,?,?,?,?,?)";
+        Object obj[]={userbill.getUsername(),userbill.getBillDate(),userbill.getType(),userbill.getName()
+                ,userbill.getNumber(),userbill.getBillDate()};
+        sdb.execSQL(sql, obj);
+        return true;
+    }
+
 
 }

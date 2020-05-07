@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         password=(EditText) findViewById(R.id.password);
         login=(Button) findViewById(R.id.login);
         register=(Button) findViewById(R.id.register);
-//When user click the login button
+        //When user click the login button
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
                     //show a toast notice the user login successfully
                     Toast.makeText(MainActivity.this, "Login successfully", Toast.LENGTH_LONG).show();
                     //jump to another activity
-                    Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
+                    Intent intent = new Intent(MainActivity.this,MainPageActivity.class);
+                    intent.putExtra("user_name",name);
                     startActivity(intent);
                 }else{// if not in the database then return false
                     Log.i("TAG","Login failed");
