@@ -70,8 +70,10 @@ public class UserService{
         else return sdf2.format(date);
     }
 
+    //for add a new record into database
     public void addRecord(userBill userbill){
         ContentValues values=new ContentValues();
+        //put all the values of the userBill into the ContentValues
         values.put("username",userbill.getUsername());
         values.put("billType",userbill.getType());
         values.put("name",userbill.getName());
@@ -79,10 +81,12 @@ public class UserService{
         values.put("billDetails",userbill.getBillDetails());
         values.put("billDate",getDateString(true));
         SQLiteDatabase db=dbHelper.getReadableDatabase();
+        //store the userBill record into the database
         db.insert("userBill",null,values);
         db.close();
     }
 
+    //show all the userBills in the database
     public List<userBill> showAllCharge(String username){
         String sql="select * from charge where username=? order by date desc";
         List<userBill> list=new ArrayList<>();
@@ -104,8 +108,5 @@ public class UserService{
         }
         return list;
     }
-
-
-
 
 }
