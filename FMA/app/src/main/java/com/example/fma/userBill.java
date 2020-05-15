@@ -9,26 +9,33 @@ import java.sql.Date;
 public class userBill implements Serializable {
 
     private String username;
-    private String billType;
     private String type;
     private String name;
-    private Double number;
-    private String billDate;
+    private String money;
+    private String date;
+    private String billDetails;
     public userBill() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    public userBill(String username, String billType,String type, String name, Double number, String billDate){
+    public userBill(String username, String type, String name, String money, String billDetails, String date){
         super();
         this.username = username;
-        this.billDate = billDate;
-        this.billType = billType;
+        this.billDetails = billDetails;
         this.name = name;
-        this.number = number;
+        this.money = money;
         this.type = type;
+        this.date = date;
     }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
 
     public String getType() {
         return type;
@@ -38,20 +45,20 @@ public class userBill implements Serializable {
         this.type = type;
     }
 
-    public String getBillType() {
-        return billType;
+    public String getMoney() {
+        return money;
     }
 
-    public void setBillType(String billType) {
-        this.billType = billType;
+    public void setMoney(String money) {
+        this.money = money;
     }
 
-    public Double getNumber() {
-        return number;
+    public String getBillDetails() {
+        return billDetails;
     }
 
-    public void setNumber(Double number) {
-        this.number = number;
+    public void setBillDetails(String billDetails) {
+        this.billDetails = billDetails;
     }
 
     public String getName() {
@@ -60,14 +67,6 @@ public class userBill implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getBillDate() {
-        return billDate;
-    }
-
-    public void setBillDate(String billDate) {
-        this.billDate = billDate;
     }
 
     public String getUsername() {

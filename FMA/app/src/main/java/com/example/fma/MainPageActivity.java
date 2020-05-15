@@ -40,7 +40,7 @@ public class MainPageActivity extends AppCompatActivity {
          */
         //initialize the first fragment(addRecordFragment) and put the bundle with the username into the fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        fragments = new Fragment[]{new addRecordFragment(), new chartsFragment()};
+        fragments = new Fragment[]{new showRecordsFragment(), new addRecordFragment()};
         //use bundle to transfer the parameter between the activity and fragment
         Bundle bundle=new Bundle();
         bundle.putString("user_name",username);
@@ -65,7 +65,7 @@ public class MainPageActivity extends AppCompatActivity {
                         return true;
                     }
                     //if the user click the charts, then show the chartsFragment and hide the another fragment
-                    case R.id.charts: {
+                    case R.id.edit: {
                         if (lastFragment != 1) {
                             switchFragment(lastFragment, 1);
                             lastFragment = 1;

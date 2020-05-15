@@ -6,9 +6,15 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.IBinder;
+import android.content.ContentValues;
 
 import com.example.fma.User;
 import com.example.fma.userBill;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class UserService{
     private DatabaseHelper dbHelper;
@@ -36,15 +42,70 @@ public class UserService{
         sdb.execSQL(sql, obj);
         return true;
     }
-
-    public boolean addRecord(userBill userbill){
-        SQLiteDatabase sdb = dbHelper.getReadableDatabase();
-        String sql="insert into user(username,billType,type,name,number,date) values(?,?,?,?,?,?)";
-        Object obj[]={userbill.getUsername(),userbill.getBillDate(),userbill.getType(),userbill.getName()
-                ,userbill.getNumber(),userbill.getBillDate()};
-        sdb.execSQL(sql, obj);
-        return true;
+    public boolean checkUserExist(String username,String password,boolean type){   //判断用户是否存在
+        boolean flag=false;
+        Cursor cursor=null;
+        String sql=null;
+        SQLiteDatabase db=dbHelper.getReadableDatabase();
+        if(type) {
+            sql= "select * from user where username=? and password=?";
+            cursor= db.rawQuery(sql, new String[]{username,password});
+        }else {
+            sql="select * from user where username=?";
+            cursor=db.rawQuery(sql,new String[]{username});
+        }
+        if(cursor.moveToFirst())
+            flag=true;
+        db.close();
+        cursor.close();
+        return flag;
     }
+
+    private String getDateString(boolean flag){      //get the real date
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf2= new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        Date date=new Date();
+        if(flag)
+            return sdf.format(date);
+        else return sdf2.format(date);
+    }
+
+    public void addRecord(userBill userbill){
+        ContentValues values=new ContentValues();
+        values.put("username",userbill.getUsername());
+        values.put("billType",userbill.getType());
+        values.put("name",userbill.getName());
+        values.put("money",userbill.getMoney());
+        values.put("billDetails",userbill.getBillDetails());
+        values.put("billDate",getDateString(true));
+        SQLiteDatabase db=dbHelper.getReadableDatabase();
+        db.insert("userBill",null,values);
+        db.close();
+    }
+
+    public List<userBill> showAllCharge(String username){
+        String sql="select * from charge where username=? order by date desc";
+        List<userBill> list=new ArrayList<>();
+            if(dbHelper!=null) {
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            Cursor cursor=db.rawQuery(sql,new String[]{username});
+            while (cursor.moveToNext()){
+                userBill charge=new userBill();
+                charge.setDate(cursor.getString(cursor.getColumnIndex("billDate")));
+                charge.setMoney(cursor.getString(cursor.getColumnIndex("money")));
+                charge.setName(cursor.getString(cursor.getColumnIndex("name")));
+                charge.setType(cursor.getString(cursor.getColumnIndex("billType")));
+                charge.setBillDetails(cursor.getString(cursor.getColumnIndex("billDetails")));
+                charge.setUsername(username);
+                list.add(charge);
+            }
+            cursor.close();
+            db.close();
+        }
+        return list;
+    }
+
+
 
 
 }

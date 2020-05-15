@@ -21,10 +21,9 @@ import com.example.fma.Service.UserService;
 
 
 public class addRecordFragment extends Fragment {
-    private EditText recordType;
+    private EditText billDetails;
     private EditText billName;
-    private EditText billNumber;
-    private EditText billDate;
+    private EditText billMoney;
     private RadioGroup billType;
     private Button addButton;
     private View view;
@@ -34,10 +33,9 @@ public class addRecordFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_add_record, container, false);
         //find the views
-        recordType = (EditText)view.findViewById(R.id.type);
+        billDetails = (EditText)view.findViewById(R.id.details);
+        billMoney = (EditText)view.findViewById(R.id.billNumber);
         billName = (EditText)view.findViewById(R.id.billName);
-        billNumber = (EditText)view.findViewById(R.id.billNumber);
-        billDate = (EditText)view.findViewById(R.id.billDate);
         billType = (RadioGroup)view.findViewById(R.id.BillType);
         addButton = (Button)view.findViewById(R.id.addButton);
 
@@ -53,23 +51,21 @@ public class addRecordFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //get the content form each EditText views and RadioGroup
-                String type = recordType.getText().toString().trim();
+                String details = billDetails.getText().toString().trim();
                 String name = billName.getText().toString().trim();
-                Double number = Double.parseDouble(billNumber.getText().toString().trim());
-                String date = billDate.getText().toString().trim();
+                String number = billMoney.getText().toString().trim();
                 String billTy = ((RadioButton)getActivity().findViewById(billType.getCheckedRadioButtonId())).getText().toString();
 
-                Log.i("TAG",billTy+"_"+type+"_"+name+"_"+number+"_"+date);
+                Log.i("TAG",billTy+"_"+name+"_"+number+"_"+details+"_");
                 //use the UserService to connect the database
                 UserService userService=new UserService(getActivity());
                 //use the userBill class to integrate data
                 userBill oneRecord = new userBill();
                 oneRecord.setUsername(username);
-                oneRecord.setBillType(billTy);
-                oneRecord.setType(type);
+                oneRecord.setType(billTy);
                 oneRecord.setName(name);
-                oneRecord.setNumber(number);
-                oneRecord.setBillDate(date);
+                oneRecord.setMoney(number);
+                oneRecord.setBillDetails(details);
                 //add a record in to the userBill table in database
                 userService.addRecord(oneRecord);
                 Toast.makeText(getActivity(), "Add bill record successfully!", Toast.LENGTH_LONG).show();

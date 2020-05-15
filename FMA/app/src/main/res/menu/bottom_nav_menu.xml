@@ -7,7 +7,7 @@
         android:icon="@drawable/homepage"
         android:title="MainPage" />
     <item
-        android:id="@+id/charts"
-        android:icon="@drawable/graph"
-        android:title="Graph" />
+        android:id="@+id/edit"
+        android:icon="@drawable/edit"
+        android:title="AddRecords" />
 </menu>
