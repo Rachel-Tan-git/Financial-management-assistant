@@ -40,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "The username already exists, please set another one", Toast.LENGTH_SHORT).show();
                 } else {
                     //use the User class to integrate data
-                    com.example.fma.User user = new com.example.fma.User();
+                    com.example.fma.userInforClass.User user = new com.example.fma.userInforClass.User();
                     user.setUsername(name);
                     user.setPassword(pass);
                     user.setAge(Integer.parseInt(ageStr));
