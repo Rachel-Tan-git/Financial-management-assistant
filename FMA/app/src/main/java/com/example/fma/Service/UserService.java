@@ -1,15 +1,12 @@
 package com.example.fma.Service;
 
-import android.app.Service;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.IBinder;
 import android.content.ContentValues;
 
-import com.example.fma.User;
-import com.example.fma.userBill;
+import com.example.fma.userInforClass.User;
+import com.example.fma.userInforClass.userBill;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -88,7 +85,7 @@ public class UserService{
 
     //show all the userBills in the database
     public List<userBill> showAllCharge(String username){
-        String sql="select * from charge where username=? order by date desc";
+        String sql="select * from userBill where username=? order by billDate desc";
         List<userBill> list=new ArrayList<>();
             if(dbHelper!=null) {
             SQLiteDatabase db = dbHelper.getWritableDatabase();

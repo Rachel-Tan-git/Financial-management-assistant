@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fma.Service.UserService;
-
+import com.example.fma.userInforClass.userBill;
 
 
 public class addRecordFragment extends Fragment {
@@ -29,7 +29,7 @@ public class addRecordFragment extends Fragment {
     private View view;
     private String username;
 
-    //private TextView test;
+
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_add_record, container, false);
         //find the views
@@ -44,8 +44,8 @@ public class addRecordFragment extends Fragment {
         Bundle bundle=getArguments();
         if(bundle != null) {
            username = bundle.getString("user_name");
-
         }
+
         //test.setText(username);
         //add a onClickListener for the addButton to add the bill record into the database
         addButton.setOnClickListener(new View.OnClickListener() {

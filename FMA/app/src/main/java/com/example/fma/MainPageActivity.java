@@ -3,14 +3,12 @@ package com.example.fma;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainPageActivity extends AppCompatActivity {
@@ -87,6 +85,9 @@ public class MainPageActivity extends AppCompatActivity {
         //hiding last Fragment
         transaction.hide(fragments[lastFragment]);
         if (fragments[index].isAdded() == false) {
+            Bundle bundle=new Bundle();
+            bundle.putString("user_name",username);
+            fragments[index].setArguments(bundle);
             transaction.add(R.id.fragment, fragments[index]);
         }
         transaction.show(fragments[index]).commitAllowingStateLoss();
