@@ -5,25 +5,28 @@ Chenchen Tan & Xinghao Li:
 
 Chenchen Tan: Complete the login feature and set the sql database in the project and implement the function to validate user information for login. 
 
-	         The change files: Create the whole project and coding to the MainActivity.java and activity_main.xml file. Adding the DatabaseHelper.java, UserService.java into the project and coding to it. 
+	         The changed files: Create the whole project and coding to the MainActivity.java and activity_main.xml file. Adding the DatabaseHelper.java, UserService.java into the project and coding to it. 
 
 Xinghao Li：Complete the register feature and base on the existing database to set the insert function to store the information of the user.
-                          The change files: Fullfilling the RegisterActivity.java and activity_register.xml file. Adding function into the UserService.java.
+                          The changed files: Fullfilling the RegisterActivity.java and activity_register.xml file. Adding function into the UserService.java.
 
 Refer to GitHub's commit record for details of the code. We removed the original repo for some special reasons. All commit's in week 7 were pushed in week 8	
 	
 Week 8:
 Chenchen Tan: Create a new activity to display the internal content and functions of the app. Develop one of several fragments to allow users to store new billing information to the database.
 
-	          The change files: Adding MainPageActivity.java and activity_main_page.xml into the project but not coding to it. Add the addRecordFragment.java into the project and coding to it, userBill.java and fragment_add_record.xml. Adding function in the UserService.java.
+	          The changed files: Adding MainPageActivity.java and activity_main_page.xml into the project but not coding to it. Add the addRecordFragment.java into the project and coding to it, userBill.java and fragment_add_record.xml. Adding function in the UserService.java.
 
 Xinghao Li: Create the bottom navigation bar for the new activity and add click events to the navigation bar to switch between different fragments;  Test the layout in different virtual environments and optimize the layout.
 
-	          The change files: Coding to the MainPgeActivity.java and activity_main_page.xml. Adding the chartsFragment.java and fragment_charts.xml into the project. Fix errors in the activity_main.xml and fragment_add_code.xml.
+	          The changed files: Coding to the MainPgeActivity.java and activity_main_page.xml. Adding the chartsFragment.java and fragment_charts.xml into the project. Fix errors in the activity_main.xml and fragment_add_code.xml.
 
 
 Week 9:
 Chenchen Tan: Fix problem of IDE. Change the setting of project. Completed the function in UserService.java to add record in the database, check the new username existed or not and show all the records. Improve the registration function to detect the existence of username and remind the user. change the layout of this project.
 
-	          The change files: MainPageActivity.java; DatabaseHelper.java; UserService.java; addRecordFragment.java; userBill.java; fragment_add_record.xml; bottom_nav_menu.xml; strings.xml.
+	          The changed files: MainPageActivity.java; DatabaseHelper.java; UserService.java; addRecordFragment.java; userBill.java; fragment_add_record.xml; bottom_nav_menu.xml; strings.xml.
 
+Xinghao Li：RecyclerView is used in showRecordsFragment to show all the records in the database。
+
+	    The changed files: MainPageActivity.java; showRecordsFragment.java; fragment_show_records.xml; new files: record_item.xml; showRecordsViewModel.java; RecyclerAdapter.java.
