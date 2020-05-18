@@ -15,18 +15,15 @@ public class MainPageActivity extends AppCompatActivity {
 
     private String username;
     private BottomNavigationView bottomNavigation;
-    private TextView welcomeText;
     private Fragment[] fragments;
     private int lastFragment = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-        welcomeText = (TextView) findViewById(R.id.WelcomeText);
         Intent intent = getIntent();
         username = intent.getStringExtra("user_name");
         //set the Username in the TextView to show the account
-        welcomeText.setText("Username: " + username);
         //find the BottomNavigationView
         bottomNavigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
@@ -38,7 +35,7 @@ public class MainPageActivity extends AppCompatActivity {
          */
         //initialize the first fragment(addRecordFragment) and put the bundle with the username into the fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        fragments = new Fragment[]{new showRecordsFragment(), new addRecordFragment()};
+        fragments = new Fragment[]{new showRecordsFragment(), new addRecordFragment(), new aboutMeFragment()};
         //use bundle to transfer the parameter between the activity and fragment
         Bundle bundle=new Bundle();
         bundle.putString("user_name",username);
@@ -69,6 +66,12 @@ public class MainPageActivity extends AppCompatActivity {
                             lastFragment = 1;
                         }
                         return true;
+                    }
+                    case R.id.aboutMe:{
+                        if (lastFragment != 2) {
+                            switchFragment(lastFragment, 2);
+                            lastFragment = 2;
+                        }
                     }
                     default:
                         break;

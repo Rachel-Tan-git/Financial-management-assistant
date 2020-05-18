@@ -10,4 +10,9 @@
         android:id="@+id/edit"
         android:icon="@drawable/edit"
         android:title="AddRecords" />
+    <item
+        android:id="@+id/aboutMe"
+        android:icon="@drawable/aboutme"
+        android:title="AboutMe" />
+
 </menu>
