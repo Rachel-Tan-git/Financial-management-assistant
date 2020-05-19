@@ -58,7 +58,6 @@ public class aboutMeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_about_me, container, false);
         usernameTextView = (TextView)view.findViewById(R.id.username);
         feedback = (TextView)view.findViewById(R.id.feedback);
-        final PdfDocument document = new PdfDocument();
         print = (TextView)view.findViewById(R.id.printRecords);
         //get the username from the MainPageActivity
         Bundle bundle=getArguments();
@@ -95,18 +94,13 @@ public class aboutMeFragment extends Fragment {
         print.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pdfInterviewContent(document);
-             if (android.os.Environment.getExternalStorageState().equals(
-                        android.os.Environment.MEDIA_MOUNTED)) {
-                 Toast.makeText(getActivity(), "1", Toast.LENGTH_SHORT).show();
-
-                } else  {
-                 Toast.makeText(getActivity(), "2", Toast.LENGTH_SHORT).show();   }
+                pdfInterviewContent();
             }
         });
 
         return view ;
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -136,7 +130,8 @@ public class aboutMeFragment extends Fragment {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private void pdfInterviewContent(PdfDocument document){
+    private void pdfInterviewContent(){
+        //ask for storage permission dynamic
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
@@ -146,30 +141,43 @@ public class aboutMeFragment extends Fragment {
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
         }
-        int onePageHeight = textContainer.getHeight()*30;
-        int lineCount = textContainer.getItemDecorationCount();
-        int pdfCount = lineCount % 30 == 0 ? lineCount/30 : lineCount/30+1;
-        for (int i = 0; i < pdfCount; i++) {
-            PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(textContainer.getWidth(),onePageHeight+120,1)
-                    .setContentRect(new Rect(0,60,textContainer.getWidth(),onePageHeight+60))
-                    .create();
-            PdfDocument.Page page = document.startPage(pageInfo);
-            Canvas canvas = page.getCanvas();
-            canvas.translate(0,-onePageHeight*i);
-            textContainer.draw(canvas);
-            document.finishPage(page);
+
+        //create PDFDocument
+        PdfDocument document = new PdfDocument();
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(textContainer.getWidth(),textContainer.getHeight(),1).create();
+        //Create a new page
+        PdfDocument.Page page = document.startPage(pageInfo);
+        //canvas draw the recyclerView content
+        textContainer.draw(page.getCanvas());
+        document.finishPage(page);
+        //set the path to save this file
+        String path =  Environment.getExternalStorageDirectory().getAbsolutePath();
+        //print the path at the backend
+        System.out.println(path);
+        File file = new File(path,"/file.pdf");
+        //if the file not exists
+        if(!file.exists()){
+            if(file.mkdirs()){
+                System.out.println(1);
+            }else
+                System.out.println(0);
+        }
+        //if the file exists, them delete it.
+        if(file.exists()){
+            file.delete();
         }
         try {
-            String path = "/mnt/sdcard/file.pdf";
-            File file = new File(path);
-            if (file.exists()) {
-                file.delete();
-            }
-        document.writeTo(new FileOutputStream(file));
+            //output the file
+            document.writeTo(new FileOutputStream(file));
+            Toast.makeText(getActivity(), "Print successful! Please check in you SDK", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
+            //Exception handling
             e.printStackTrace();
         }
         document.close();
     }
+
+  //  String path = "/mnt/sdcard/";
+   // File file = new File(path,"/file.pdf");
 
 }
