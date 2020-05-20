@@ -11,6 +11,8 @@
     <string name="details_hint">Please enter the bill details</string>
     <string name="name_hint">Please enter the bill name</string>
     <string name="number_hint">Please enter the bill money</string>
+    <string name="begin_date_hint">Begin Date:yyyy-mm-dd</string>
+    <string name="end_date_hint">End Date:yyyy-mm-dd</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

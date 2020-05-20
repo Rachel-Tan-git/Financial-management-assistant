@@ -106,4 +106,26 @@ public class UserService{
         return list;
     }
 
+    public List<userBill> showDateCharge(String username, String startDate, String endDate){
+        String sql="select * from userBill where username='"+username+"' and (billDate>='"+startDate+" 00:00:00' and billDate<='"+endDate+" 23:59:59')";
+        List<userBill> list=new ArrayList<>();
+        if(dbHelper!=null) {
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            Cursor cursor=db.rawQuery(sql,null);
+            while (cursor.moveToNext()){
+                userBill charge=new userBill();
+                charge.setDate(cursor.getString(cursor.getColumnIndex("billDate")));
+                charge.setMoney(cursor.getString(cursor.getColumnIndex("money")));
+                charge.setName(cursor.getString(cursor.getColumnIndex("name")));
+                charge.setType(cursor.getString(cursor.getColumnIndex("billType")));
+                charge.setBillDetails(cursor.getString(cursor.getColumnIndex("billDetails")));
+                charge.setUsername(username);
+                list.add(charge);
+            }
+            cursor.close();
+            db.close();
+        }
+        return list;
+    }
+
 }
