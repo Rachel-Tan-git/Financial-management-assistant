@@ -1,13 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".showRecordsFragment">
 
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/allRecords"
+       android:layout_width="417dp"
+       android:layout_height="404dp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintVertical_bias="0.687" />
 
-   /* <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/allRecords"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</FrameLayout>
+   <TextView
+       android:id="@+id/textView11"
+       android:layout_width="22dp"
+       android:layout_height="22dp"
+       android:layout_marginTop="52dp"
+       android:text="TO"
+       app:layout_constraintEnd_toStartOf="@+id/endDate"
+       app:layout_constraintTop_toTopOf="parent" />
+
+   <Button
+       android:id="@+id/Search"
+       android:layout_width="96dp"
+       android:layout_height="37dp"
+       android:layout_marginTop="28dp"
+       android:layout_marginEnd="8dp"
+       android:layout_marginRight="8dp"
+       android:text="@android:string/search_go"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+
+   <TextView
+       android:id="@+id/textView13"
+       android:layout_width="313dp"
+       android:layout_height="39dp"
+       android:layout_marginTop="51dp"
+       android:layout_marginEnd="4dp"
+       android:layout_marginRight="4dp"
+       android:layout_marginBottom="60dp"
+       app:layout_constraintBottom_toTopOf="@+id/allRecords"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/startDate" />
+
+   <TextView
+       android:id="@+id/textView12"
+       android:layout_width="56dp"
+       android:layout_height="19dp"
+       android:layout_marginStart="16dp"
+       android:layout_marginLeft="16dp"
+       android:layout_marginTop="59dp"
+       android:layout_marginBottom="72dp"
+       android:text="Total: "
+       android:textSize="18sp"
+       app:layout_constraintBottom_toTopOf="@+id/allRecords"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/startDate" />
+
+   <EditText
+       android:id="@+id/startDate"
+       android:layout_width="138dp"
+       android:layout_height="44dp"
+       android:layout_marginTop="32dp"
+       android:ems="10"
+       android:hint="@string/begin_date_hint"
+       android:inputType="date"
+       android:textSize="12sp"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+
+   <EditText
+       android:id="@+id/endDate"
+       android:layout_width="126dp"
+       android:layout_height="44dp"
+       android:layout_marginTop="32dp"
+       android:layout_marginEnd="16dp"
+       android:layout_marginRight="16dp"
+       android:ems="10"
+       android:hint="@string/end_date_hint"
+       android:inputType="date"
+       android:textSize="12sp"
+       app:layout_constraintEnd_toStartOf="@+id/Search"
+       app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
