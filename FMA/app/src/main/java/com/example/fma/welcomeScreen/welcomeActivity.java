@@ -29,7 +29,7 @@ public class welcomeActivity extends AppCompatActivity {
     private Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg){
-            //实现页面的跳转
+            //Realize the page jump
             Intent intent=new Intent(welcomeActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
