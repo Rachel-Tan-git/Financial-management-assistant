@@ -105,7 +105,7 @@ public class UserService{
         }
         return list;
     }
-
+    //select userBill records based date
     public List<userBill> showDateCharge(String username, String startDate, String endDate){
         String sql="select * from userBill where username='"+username+"' and (billDate>='"+startDate+" 00:00:00' and billDate<='"+endDate+" 23:59:59')";
         List<userBill> list=new ArrayList<>();
@@ -126,6 +126,43 @@ public class UserService{
             db.close();
         }
         return list;
+    }
+
+    //select userBill records income money and spending money based date
+    public String getAllDateRecordsMoney(String username,String startDate,String endDate){
+        String income="",outcome="";
+        String sql="";
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        sql="select sum(money) from userBill where username='"+username+"' and (billDate>='"+startDate+" 00:00:00' and billDate<='"+endDate+" 23:59:59') and billType='Income'";
+        Cursor cursor=db.rawQuery(sql,null);
+        if(cursor.moveToFirst())
+            income=cursor.getString(0);
+        cursor.close();
+        sql="select sum(money) from userBill where username='"+username+"' and (billDate>='"+startDate+" 00:00:00' and billDate<='"+endDate+" 23:59:59') and billType='Spending'";
+        cursor=db.rawQuery(sql,null);
+        if(cursor.moveToFirst())
+            outcome=cursor.getString(0);
+        cursor.close();
+        db.close();
+        return "Total income: "+income+";"+"Total spending"+outcome;
+    }
+    //select all the userBill records income money and spending money
+    public String getAllRecordsMoney(String username){
+        String income="",outcome="";
+        String sql="";
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        sql="select sum(money) from userBill where username='"+username+"' and billType='Income'";
+        Cursor cursor=db.rawQuery(sql,null);
+        if(cursor.moveToFirst())
+            income=cursor.getString(0);
+        cursor.close();
+        sql="select sum(money) from userBill where username='"+username+"' and billType='Spending'";
+        cursor=db.rawQuery(sql,null);
+        if(cursor.moveToFirst())
+            outcome=cursor.getString(0);
+        cursor.close();
+        db.close();
+        return "Total income: "+income+";"+"Total spending"+outcome;
     }
 
 }

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.fma.Adapter.RecyclerAdapter;
 import com.example.fma.Service.UserService;
@@ -33,6 +34,7 @@ public class showRecordsFragment extends Fragment {
     private EditText endDate;
     private Button searchButton;
     private Fragment showRecordsFragment;
+    private TextView total;
     private View view;
 
     //this is the beginning of this fragment
@@ -42,6 +44,7 @@ public class showRecordsFragment extends Fragment {
         startDate = (EditText)view.findViewById(R.id.startDate);
         endDate = (EditText)view.findViewById(R.id.endDate);
         searchButton = (Button) view.findViewById(R.id.Search);
+        total = (TextView)view.findViewById(R.id.total);
 
         return view;
     }
@@ -57,12 +60,13 @@ public class showRecordsFragment extends Fragment {
         Log.i("TAG", username );
         showRecordsFragment = this;
         userService = new UserService(getContext());
-        list = userService.showAllCharge(username);
-
-        viewModel = showRecordsViewModel.getINSTANCE(showRecordsFragment);
         //use the username to get all the userBill records from database
-
+        list = userService.showAllCharge(username);
+        //user user name to get all total income money and spending money
+        String totalMoney = userService.getAllRecordsMoney(username);
+        total.setText(totalMoney);
         //use the viewModel to processing the list data and share the data with adapter
+        viewModel = showRecordsViewModel.getINSTANCE(showRecordsFragment);
         viewModel.setLiveData(list);
         //set the layout for the recyclerView
         recyclerView = requireActivity().findViewById(R.id.allRecords);
@@ -80,6 +84,7 @@ public class showRecordsFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
+        //set the click lister to the search button for search the billRecords(based on the startDate and endDate)
         searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String startDay = startDate.getText().toString();
@@ -89,15 +94,16 @@ public class showRecordsFragment extends Fragment {
             }
         });
     }
-
+    //set the RecyclerView to store the records(get from the date)
     private void setRecyclerView(String username, String startDay, String endDay){
         showRecordsFragment = this;
         userService = new UserService(getContext());
+        //use the username and startDay,endDay to get the userBill records and total income and spending money from database
         list = userService.showDateCharge(username,startDay,endDay);
-        viewModel = showRecordsViewModel.getINSTANCE(showRecordsFragment);
-        //use the username to get all the userBill records from database
-
+        String totalMoney = userService.getAllDateRecordsMoney(username,startDay,endDay);
+        total.setText(totalMoney);
         //use the viewModel to processing the list data and share the data with adapter
+        viewModel = showRecordsViewModel.getINSTANCE(showRecordsFragment);
         viewModel.setLiveData(list);
         //set the layout for the recyclerView
         recyclerView = requireActivity().findViewById(R.id.allRecords);
