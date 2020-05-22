@@ -39,7 +39,7 @@ public class UserService{
         sdb.execSQL(sql, obj);
         return true;
     }
-    public boolean checkUserExist(String username,String password,boolean type){   //判断用户是否存在
+    public boolean checkUserExist(String username,String password,boolean type){   //check the user exist or not
         boolean flag=false;
         Cursor cursor=null;
         String sql=null;
@@ -92,6 +92,7 @@ public class UserService{
             Cursor cursor=db.rawQuery(sql,new String[]{username});
             while (cursor.moveToNext()){
                 userBill charge=new userBill();
+                charge.setId(cursor.getString(cursor.getColumnIndex("id")));
                 charge.setDate(cursor.getString(cursor.getColumnIndex("billDate")));
                 charge.setMoney(cursor.getString(cursor.getColumnIndex("money")));
                 charge.setName(cursor.getString(cursor.getColumnIndex("name")));
@@ -114,6 +115,7 @@ public class UserService{
             Cursor cursor=db.rawQuery(sql,null);
             while (cursor.moveToNext()){
                 userBill charge=new userBill();
+                charge.setId(cursor.getString(cursor.getColumnIndex("id")));
                 charge.setDate(cursor.getString(cursor.getColumnIndex("billDate")));
                 charge.setMoney(cursor.getString(cursor.getColumnIndex("money")));
                 charge.setName(cursor.getString(cursor.getColumnIndex("name")));
@@ -163,6 +165,24 @@ public class UserService{
         cursor.close();
         db.close();
         return "Total income: "+income+";"+"Total spending"+outcome;
+    }
+
+    //using the id of userBill to get a bill
+    public userBill showBillItem(String id){
+        String sql="select * from userBill where id='"+id+"'";
+        userBill charge=new userBill();
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        Cursor cursor=db.rawQuery(sql,null);
+        if(cursor.moveToFirst()){
+            charge.setId(cursor.getString(cursor.getColumnIndex("id")));
+            charge.setDate(cursor.getString(cursor.getColumnIndex("billDate")));
+            charge.setMoney(cursor.getString(cursor.getColumnIndex("money")));
+            charge.setName(cursor.getString(cursor.getColumnIndex("name")));
+            charge.setType(cursor.getString(cursor.getColumnIndex("billType")));
+            charge.setBillDetails(cursor.getString(cursor.getColumnIndex("billDetails")));
+            charge.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+        }
+        return charge;
     }
 
 }

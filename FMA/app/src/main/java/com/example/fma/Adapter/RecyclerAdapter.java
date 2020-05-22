@@ -1,5 +1,6 @@
 package com.example.fma.Adapter;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fma.R;
 import com.example.fma.Service.UserService;
+import com.example.fma.showRecordDetailActivity;
 import com.example.fma.showRecordsViewModel;
 import com.example.fma.userInforClass.userBill;
 
@@ -53,6 +55,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             holder.type.setText(userBill.getType());
             holder.name.setText(userBill.getName());
             holder.date.setText(userBill.getDate());
+
+            //set a click lister
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    holder.itemView.getContext()//got the showRecordDetailActivity to show the Item detail
+                            .startActivity(new Intent(holder.itemView.getContext(), showRecordDetailActivity.class).putExtra("billId",userBill.getId()));
+                }
+            });
         }
     }
 
