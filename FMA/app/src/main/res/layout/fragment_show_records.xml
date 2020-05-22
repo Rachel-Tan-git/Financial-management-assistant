@@ -37,29 +37,20 @@
 
    <TextView
        android:id="@+id/total"
-       android:layout_width="313dp"
-       android:layout_height="39dp"
+       android:layout_width="385dp"
+       android:layout_height="49dp"
+       android:layout_marginStart="42dp"
+       android:layout_marginLeft="42dp"
        android:layout_marginTop="51dp"
-       android:layout_marginEnd="4dp"
-       android:layout_marginRight="4dp"
+       android:layout_marginEnd="56dp"
+       android:layout_marginRight="56dp"
        android:layout_marginBottom="60dp"
        app:layout_constraintBottom_toTopOf="@+id/allRecords"
        app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/startDate" />
-
-   <TextView
-       android:id="@+id/textView12"
-       android:layout_width="56dp"
-       android:layout_height="19dp"
-       android:layout_marginStart="16dp"
-       android:layout_marginLeft="16dp"
-       android:layout_marginTop="59dp"
-       android:layout_marginBottom="72dp"
-       android:text="Total: "
-       android:textSize="18sp"
-       app:layout_constraintBottom_toTopOf="@+id/allRecords"
+       app:layout_constraintHorizontal_bias="0.444"
        app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/startDate" />
+       app:layout_constraintTop_toBottomOf="@+id/startDate"
+       app:layout_constraintVertical_bias="0.272" />
 
    <EditText
        android:id="@+id/startDate"

@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fma.Adapter.RecyclerAdapter;
 import com.example.fma.Service.UserService;
@@ -57,7 +58,6 @@ public class showRecordsFragment extends Fragment {
         if(bundle != null) {
             username = bundle.getString("user_name");
         }
-        Log.i("TAG", username );
         showRecordsFragment = this;
         userService = new UserService(getContext());
         //use the username to get all the userBill records from database
@@ -89,8 +89,13 @@ public class showRecordsFragment extends Fragment {
             public void onClick(View v) {
                 String startDay = startDate.getText().toString();
                 String endDay = endDate.getText().toString();
-                setRecyclerView(username,startDay,endDay);
-                Log.i("TAG", username + "_" + startDay+ "_" + endDay);
+                if(startDay.matches("\\d{4}-\\d{2}-\\d{2}") && endDay.matches("\\d{4}-\\d{2}-\\d{2}")) {
+                    setRecyclerView(username, startDay, endDay);
+                    Log.i("TAG", username + "_" + startDay + "_" + endDay);
+                }
+                else{
+                    Toast.makeText(getActivity(), "The date format is wrong. Please enter yyyy-mm-dd(eg.2020-01-01) ", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

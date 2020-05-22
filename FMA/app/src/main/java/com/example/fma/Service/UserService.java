@@ -146,7 +146,7 @@ public class UserService{
             outcome=cursor.getString(0);
         cursor.close();
         db.close();
-        return "Total income: "+income+";"+"Total spending"+outcome;
+        return "Total income: "+income+";  "+"Total spending"+outcome;
     }
     //select all the userBill records income money and spending money
     public String getAllRecordsMoney(String username){
@@ -164,7 +164,7 @@ public class UserService{
             outcome=cursor.getString(0);
         cursor.close();
         db.close();
-        return "Total income: "+income+";"+"Total spending"+outcome;
+        return "Total income: "+income+";  "+"Total spending"+outcome;
     }
 
     //using the id of userBill to get a bill
@@ -183,6 +183,21 @@ public class UserService{
             charge.setUsername(cursor.getString(cursor.getColumnIndex("username")));
         }
         return charge;
+    }
+
+    //delete the bill record
+    public void deleteItem(String id){
+        String sql="delete from userBill where id='"+id+"'";
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        db.execSQL(sql);
+    }
+    //change the bill record
+    public void updateItem(userBill bill){
+        String sql="update userBill set username='"+bill.getUsername()+"',billType='"+bill.getType()+"'," +
+                "name='"+bill.getName()+"',money='"+bill.getMoney()+"',billDetails='"+bill.getBillDetails()+"',billDate='"+bill.getDate()+"' where id='"+bill.getId()+"'";
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        db.execSQL(sql);
+        db.close();
     }
 
 }
