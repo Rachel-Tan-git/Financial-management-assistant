@@ -200,4 +200,27 @@ public class UserService{
         db.close();
     }
 
+    public List<userBill> keySearchItem(String username, String key){
+        String sql="select * from userBill where username=? and (billDate like '%"+key+"%' or name like '%"+key+"%' or billType like '%"+key+"%')";
+        List<userBill> list=new ArrayList<>();
+        if(dbHelper!=null) {
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            Cursor cursor = db.rawQuery(sql, new String[]{username});
+            while (cursor.moveToNext()) {
+                userBill charge = new userBill();
+                charge.setId(cursor.getString(cursor.getColumnIndex("id")));
+                charge.setDate(cursor.getString(cursor.getColumnIndex("billDate")));
+                charge.setMoney(cursor.getString(cursor.getColumnIndex("money")));
+                charge.setName(cursor.getString(cursor.getColumnIndex("name")));
+                charge.setType(cursor.getString(cursor.getColumnIndex("billType")));
+                charge.setBillDetails(cursor.getString(cursor.getColumnIndex("billDetails")));
+                charge.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+                list.add(charge);
+            }
+            cursor.close();
+            db.close();
+        }
+        return list;
+    }
+
 }

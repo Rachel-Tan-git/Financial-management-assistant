@@ -33,7 +33,8 @@ public class showRecordsFragment extends Fragment {
     private String username;
     private EditText startDate;
     private EditText endDate;
-    private Button searchButton;
+    private EditText searchKey;
+    private Button searchButton, keySearch;
     private Fragment showRecordsFragment;
     private TextView total;
     private View view;
@@ -46,6 +47,8 @@ public class showRecordsFragment extends Fragment {
         endDate = (EditText)view.findViewById(R.id.endDate);
         searchButton = (Button) view.findViewById(R.id.Search);
         total = (TextView)view.findViewById(R.id.total);
+        keySearch = (Button)view.findViewById(R.id.keySearch);
+        searchKey = (EditText)view.findViewById(R.id.searchKey);
 
         return view;
     }
@@ -96,6 +99,16 @@ public class showRecordsFragment extends Fragment {
                 else{
                     Toast.makeText(getActivity(), "The date format is wrong. Please enter yyyy-mm-dd(eg.2020-01-01) ", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+        //if the user enter some keyword and then click the search button.
+        keySearch.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //the database will give a userBill list contain the record include the keyword
+                viewModel.setLiveData(userService.keySearchItem(username,searchKey.getText().toString()));
+                adapter = new RecyclerAdapter(viewModel);
+                //the recyclerView could show the search result
+                recyclerView.setAdapter(adapter);
             }
         });
     }
