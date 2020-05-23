@@ -55,20 +55,25 @@ public class addRecordFragment extends Fragment {
                 String name = billName.getText().toString().trim();
                 String number = billMoney.getText().toString().trim();
                 String billTy = ((RadioButton)getActivity().findViewById(billType.getCheckedRadioButtonId())).getText().toString();
-
-                Log.i("TAG",billTy+"_"+name+"_"+number+"_"+details+"_");
-                //use the UserService to connect the database
-                UserService userService=new UserService(getActivity());
-                //use the userBill class to integrate data
-                userBill oneRecord = new userBill();
-                oneRecord.setUsername(username);
-                oneRecord.setType(billTy);
-                oneRecord.setName(name);
-                oneRecord.setMoney(number);
-                oneRecord.setBillDetails(details);
-                //add a record in to the userBill table in database
-                userService.addRecord(oneRecord);
-                Toast.makeText(getActivity(), "Add bill record successfully!", Toast.LENGTH_LONG).show();
+                //judge the input is empty or not
+                if(name.isEmpty() || number.isEmpty())
+                {
+                    Toast.makeText(getActivity(), "The bill name and number cannot be empty!", Toast.LENGTH_LONG).show();
+                }else {
+                    //Log.i("TAG",billTy+"_"+name+"_"+number+"_"+details+"_");
+                    //use the UserService to connect the database
+                    UserService userService = new UserService(getActivity());
+                    //use the userBill class to integrate data
+                    userBill oneRecord = new userBill();
+                    oneRecord.setUsername(username);
+                    oneRecord.setType(billTy);
+                    oneRecord.setName(name);
+                    oneRecord.setMoney(number);
+                    oneRecord.setBillDetails(details);
+                    //add a record in to the userBill table in database
+                    userService.addRecord(oneRecord);
+                    Toast.makeText(getActivity(), "Add bill record successfully!", Toast.LENGTH_LONG).show();
+                }
             }
         });
         return view;

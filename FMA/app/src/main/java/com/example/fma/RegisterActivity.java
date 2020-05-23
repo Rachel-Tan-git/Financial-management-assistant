@@ -2,6 +2,7 @@ package com.example.fma;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,22 +33,29 @@ public class RegisterActivity extends AppCompatActivity {
                 String pass = password.getText().toString().trim();
                 String ageStr = age.getText().toString().trim();
                 String sexStr = ((RadioButton) RegisterActivity.this.findViewById(sex.getCheckedRadioButtonId())).getText().toString();
-                Log.i("TAG", name + "_" + pass + "_" + ageStr + "_" + sexStr);
-                //use the UserService to connect the database
-                UserService uService = new UserService(RegisterActivity.this);
-                //check if the username exists
-                if (uService.checkUserExist(name, null, false)) {
-                    Toast.makeText(RegisterActivity.this, "The username already exists, please set another one", Toast.LENGTH_SHORT).show();
-                } else {
-                    //use the User class to integrate data
-                    com.example.fma.userInforClass.User user = new com.example.fma.userInforClass.User();
-                    user.setUsername(name);
-                    user.setPassword(pass);
-                    user.setAge(Integer.parseInt(ageStr));
-                    user.setSex(sexStr);
-                    //add a line into user table in the database
-                    uService.register(user);
-                    Toast.makeText(RegisterActivity.this, "Register successfully! Please use the back button to Login", Toast.LENGTH_LONG).show();
+                //judge the input is empty or not
+                if (name.isEmpty() || pass.isEmpty() || ageStr.isEmpty())
+                {
+                    Toast.makeText(RegisterActivity.this, "The username, age and the password cannot be null", Toast.LENGTH_SHORT).show();
+                }else{
+                    //use the UserService to connect the database
+                    UserService uService = new UserService(RegisterActivity.this);
+                    //check if the username exists
+                    if (uService.checkUserExist(name, null, false)) {
+                        Toast.makeText(RegisterActivity.this, "The username already exists, please set another one", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //use the User class to integrate data
+                        com.example.fma.userInforClass.User user = new com.example.fma.userInforClass.User();
+                        user.setUsername(name);
+                        user.setPassword(pass);
+                        user.setAge(Integer.parseInt(ageStr));
+                        user.setSex(sexStr);
+                        //add a line into user table in the database
+                        uService.register(user);
+                        //back to the login screen
+                        startActivity(new Intent(RegisterActivity.this,MainActivity.class));
+                        Toast.makeText(RegisterActivity.this, "Register successfully! Please use the back button to Login", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
