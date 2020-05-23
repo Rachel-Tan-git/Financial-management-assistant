@@ -71,7 +71,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/feedback" />
     <Button
-        android:id="@+id/button"
+        android:id="@+id/logout"
         android:layout_width="168dp"
         android:layout_height="48dp"
         android:layout_marginStart="124dp"

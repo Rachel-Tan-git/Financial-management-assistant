@@ -25,6 +25,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class aboutMeFragment extends Fragment {
     private RecyclerAdapter adapter;
     private TextView print;
     private View view;
+    private Button logout;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -59,6 +61,7 @@ public class aboutMeFragment extends Fragment {
         usernameTextView = (TextView)view.findViewById(R.id.username);
         feedback = (TextView)view.findViewById(R.id.feedback);
         print = (TextView)view.findViewById(R.id.printRecords);
+        logout = (Button)view.findViewById(R.id.logout);
         //get the username from the MainPageActivity
         Bundle bundle=getArguments();
         if(bundle != null) {
@@ -95,6 +98,13 @@ public class aboutMeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 pdfInterviewContent();
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //back to the login screen
+                startActivity(new Intent(getActivity(),MainActivity.class));
             }
         });
 
