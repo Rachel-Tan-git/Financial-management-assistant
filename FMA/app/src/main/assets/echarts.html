@@ -8,7 +8,7 @@
 <div id="main" style="height:400px;"></div>
 <!-- ECharts imported -->
 </body>
-<script src="./echarts.js" type="text/javascript"></script>
+<script src="./echarts.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 
 var main=document.getElementById('main');
@@ -39,16 +39,12 @@ function createChart(result){
     var charge_out=[];
 
     for(i=0;i<size;i++){
-        dates.push(json[i].date);
+        dates.push(json[i].billDate);
         charge_in.push(parseInt(json[i].chargein));
         charge_out.push(parseInt(json[i].chargeout));
     }
 
     var option={
-          title: {
-                text: 'bill details'
-            },
-
             tooltip: {
                 formatter: function (params) {
                     var table="<table><tr><td>name</td><td>type</td><td>money</td></tr>";

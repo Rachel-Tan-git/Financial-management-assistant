@@ -7,6 +7,10 @@
         android:icon="@drawable/homepage"
         android:title="MainPage" />
     <item
+        android:id="@+id/charts"
+        android:icon="@drawable/charts"
+        android:title="Charts" />
+    <item
         android:id="@+id/edit"
         android:icon="@drawable/edit"
         android:title="AddRecords" />

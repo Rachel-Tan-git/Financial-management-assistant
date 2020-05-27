@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.content.ContentValues;
+import android.util.Log;
 
 import com.example.fma.userInforClass.User;
 import com.example.fma.userInforClass.userBill;
@@ -221,6 +222,50 @@ public class UserService{
             db.close();
         }
         return list;
+    }
+
+    //get the all the need bill data(billDate, name, money, type), and store them into the StringBuilder
+    public String chartsData(String startDate,String endDate,String username){
+        String tempstr="";
+        StringBuilder builder=new StringBuilder();
+        String sql="select * from userBill where username='"+username+"' and (billDate>='"+startDate+" 00:00:00' and billDate<='"+endDate+" 23:59:59')";
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        Cursor cursor=db.rawQuery(sql,null);
+        while (cursor.moveToNext()) {
+            if(!tempstr.contains(cursor.getString(cursor.getColumnIndex("billDate")).split(" ")[0]))
+                //get the date and store them into a string line
+                tempstr += cursor.getString(cursor.getColumnIndex("billDate")).split(" ")[0] + "/";
+        }
+        cursor.close();
+        //get each date and use the date count to get the other data in that date
+        String str[]=tempstr.split("/");
+        for (int i=0;i<str.length;i++){
+            builder.append("{billDate:'").append(str[i]+"',");
+            sql="select sum(money) from userBill where username='"+username+"' and billType='Income' and billDate like '"+str[i]+"%'";
+            cursor=db.rawQuery(sql,null);
+            cursor.moveToFirst();
+            builder.append("chargein:'"+cursor.getString(0)).append("',");
+            cursor.close();
+            sql="select sum(money) from userBill where username='"+username+"' and billType='Spending' and billDate like '"+str[i]+"%'";
+            cursor=db.rawQuery(sql,null);
+            cursor.moveToFirst();
+            builder.append("chargeout:'"+cursor.getString(0)).append("',").append("day:[");
+            cursor.close();
+
+            sql="select * from userBill where username='"+username+"' and billDate like '"+str[i]+"%'";
+            cursor=db.rawQuery(sql,null);
+            while (cursor.moveToNext()){
+                builder.append("{").append("name:'"+cursor.getString(cursor.getColumnIndex("name")))
+                        .append("',type:'"+cursor.getString(cursor.getColumnIndex("billType")))
+                        .append("',money:'"+cursor.getString(cursor.getColumnIndex("money"))).append("'},");
+            }
+            builder.replace(builder.lastIndexOf(","),builder.lastIndexOf(",")+1,"");
+            builder.append("]},");
+            cursor.close();
+        }
+        builder.replace(builder.lastIndexOf(","),builder.lastIndexOf(",")+1,"");
+        db.close();
+        return "["+builder.toString()+"]";
     }
 
 }
