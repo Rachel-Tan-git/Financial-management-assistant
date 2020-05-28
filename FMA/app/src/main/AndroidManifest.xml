@@ -13,7 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".showRecordDetailActivity"></activity>
+        <service android:name=".Service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".showRecordDetailActivity" />
         <activity android:name=".welcomeScreen.welcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainPageActivity"
-            android:windowSoftInputMode="adjustPan"/>
-
+        <activity
+            android:name=".MainPageActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
     </application>
