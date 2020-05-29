@@ -55,6 +55,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             holder.type.setText(userBill.getType());
             holder.name.setText(userBill.getName());
             holder.date.setText(userBill.getDate());
+            holder.moneyText.setText("Money: "+userBill.getMoney());
 
             //set a click lister
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -74,13 +75,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
         //find views
-        TextView number,date,name,type;
+        TextView number,date,name,type,moneyText;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.billName);
             date=itemView.findViewById(R.id.billDate);
             type=itemView.findViewById(R.id.billType);
             number=itemView.findViewById(R.id.billNumber);
+            moneyText=itemView.findViewById(R.id.moneyText);
         }
     }
 }
