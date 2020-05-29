@@ -78,6 +78,7 @@ public class MainPageActivity extends AppCompatActivity {
                             switchFragment(lastFragment, 3);
                             lastFragment = 3;
                         }
+                        return true;
                     }
 
                     default:

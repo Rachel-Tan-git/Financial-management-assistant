@@ -38,33 +38,33 @@
         android:layout_width="23dp"
         android:layout_height="19dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="TO"
         app:layout_constraintEnd_toStartOf="@+id/endDate"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/startDate"
-        android:layout_width="100dp"
+        android:layout_width="135dp"
         android:layout_height="40dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginRight="26dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
         android:ems="10"
+        android:hint="@string/begin_date_hint"
         android:inputType="date"
+        android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/textView16"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/endDate"
-        android:layout_width="100dp"
+        android:layout_width="135dp"
         android:layout_height="40dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
         android:ems="10"
+        android:hint="@string/end_date_hint"
         android:inputType="date"
+        android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/chartSearch"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

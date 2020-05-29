@@ -13,6 +13,7 @@
     <string name="number_hint">Please enter the bill money</string>
     <string name="begin_date_hint">Begin Date:yyyy-mm-dd</string>
     <string name="end_date_hint">End Date:yyyy-mm-dd</string>
+    <string name="key_search_hint">Please enter a key value to search</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
