@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.fma.Service.UserService;
 
@@ -41,17 +42,29 @@ public class echartsFragment extends Fragment {
         //set the webView
         webView.getSettings().setAllowFileAccess(true);
         webView.getSettings().setJavaScriptEnabled(true);
+        //webView.getSettings().setDomStorageEnabled(true);
         //put the echarts.html in the webView
         webView.loadUrl("file:///android_asset/echarts.html");
+        //set the initial chart
+        //total = userService.chartsData(" "," ",username);
+        //webView.loadUrl("javascript:createChart("+total+");");
         chartSearch = (Button)view.findViewById(R.id.chartSearch);
         chartSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String startDay = startDate.getText().toString();
                 String endDay = endDate.getText().toString();
-                total = userService.chartsData(startDay,endDay,username);
-                Log.i("TAG", total);
-                //transfer the parameter(total) into the html file to build the charts
-                webView.loadUrl("javascript:createChart("+total+");");
+                //using Regular expression to check the format of the date
+                if(startDay.matches("\\d{4}-\\d{2}-\\d{2}") && endDay.matches("\\d{4}-\\d{2}-\\d{2}")) {
+                    total = userService.chartsData(startDay,endDay,username);
+                    Log.i("TAG", total);
+                    //transfer the parameter(total) into the html file to build the charts
+                    webView.loadUrl("javascript:createChart("+total+");");
+                    //Log.i("TAG", username + "_" + startDay + "_" + endDay);
+                }
+                else{
+                    Toast.makeText(getActivity(), "The date format is wrong. Please enter yyyy-mm-dd(eg.2020-01-01) ", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
