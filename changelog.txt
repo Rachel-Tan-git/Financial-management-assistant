@@ -21,7 +21,6 @@ Xinghao Li: Create the bottom navigation bar for the new activity and add click 
 
 	          The changed files: Coding to the MainPgeActivity.java and activity_main_page.xml. Adding the chartsFragment.java and fragment_charts.xml into the project. Fix errors in the activity_main.xml and fragment_add_code.xml.
 
-
 Week 9:
 Chenchen Tan: Fix problem of IDE. Change the setting of project. Completed the function in UserService.java to add record in the database, check the new username existed or not and show all the records. Improve the registration function to detect the existence of username and remind the user. change the layout of this project.
 
@@ -30,3 +29,13 @@ Chenchen Tan: Fix problem of IDE. Change the setting of project. Completed the f
 Xinghao Li：RecyclerView is used in showRecordsFragment to show all the records in the database。
 
 	    The changed files: MainPageActivity.java; showRecordsFragment.java; fragment_show_records.xml; new files: record_item.xml; showRecordsViewModel.java; RecyclerAdapter.java.
+
+Week10：
+Chenchen Tan: Add a new fragment called aboutMeFragment, in this fragment show the username and allow the user give feedback to the developer. Complete the function of searching records according to the user setting time and displaying it in showRecordsFragment. Complete the function to show the total income and spending money. Implement a utility to delete a bill record and update a bill record in the database and UI screen. Check whether the user's input meets the standard. If it does, proceed to the next step. If it does not, remind the user to re-enter.
+
+	          The changed files: MainPageActivity.java; aboutMeFragment.java; activity_main_page.xml; fragment_about_me.xml; bottom_nav_menu.xml; misc.xml; UserService.java; showRecordsFragment.java; record_item.xml; strings.xml; showRecordDetailActivity.java; activity_show_record_detail.xml; fragment_show_records.xml; RegisterActivity.java; addRecordFragment.java; fragment_add_record.xml. 	         
+
+Xinghao Li: Developed the ability to generate PDF to store all bill records of users, but it needs to be further improved. Improved the ability to generate PDF to store all user bill records. Update the layout of showRecordsFragment. Add the image when opening the app. Create a new activity and when the user clicks recyclerView it jumps to the showRecordDetailActivity to show all the information for a bill record. Solve the keyboard occlusion problem, add keyword search and logout function.  
+
+	          The changed files: misc.xml; aboutMeFragment.java; fragment_about_me.xml; AndroidManifest.xml;  fragment_show_records.xml; welcomeActivity.java; RecyclerAdapter.java; DatabaseHelper.java; UserService.java; showRecordDetailActivity.java; userBill.java; activity_show_record_detail.xml; fragment_add_record.xml.
+
