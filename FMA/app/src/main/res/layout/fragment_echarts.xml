@@ -22,16 +22,16 @@
         android:layout_height="552dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="77dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
         android:layout_marginBottom="1dp"
+        android:background="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.677" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
         android:id="@+id/textView16"
@@ -66,5 +66,14 @@
         android:inputType="date"
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/chartSearch"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/charts_hint"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

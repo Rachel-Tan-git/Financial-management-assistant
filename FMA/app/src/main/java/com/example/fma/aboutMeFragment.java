@@ -154,7 +154,8 @@ public class aboutMeFragment extends Fragment {
 
         //create PDFDocument
         PdfDocument document = new PdfDocument();
-        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(textContainer.getWidth(),textContainer.getHeight(),1).create();
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(2000, 2000, 2).create();
+        Log.i("TAG", String.valueOf(textContainer.getWidth()) + String.valueOf(textContainer.getHeight()));
         //Create a new page
         PdfDocument.Page page = document.startPage(pageInfo);
         //canvas draw the recyclerView content
@@ -179,7 +180,7 @@ public class aboutMeFragment extends Fragment {
         try {
             //output the file
             document.writeTo(new FileOutputStream(file));
-            Toast.makeText(getActivity(), "Print successful! Please check in you SDK", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Print successful! Please check in you SDCard", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             //Exception handling
             e.printStackTrace();
