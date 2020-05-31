@@ -1,11 +1,8 @@
 package com.example.fma.Service;
 
-import android.app.Service;
 import android.content.Context;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.IBinder;
 
 /***
  * use the SQLite to store the user information so need use the DatabaseHelper(SQLiteOpenHelper)

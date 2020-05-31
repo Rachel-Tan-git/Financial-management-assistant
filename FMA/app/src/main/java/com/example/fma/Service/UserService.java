@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.content.ContentValues;
-import android.util.Log;
 
 import com.example.fma.userInforClass.User;
 import com.example.fma.userInforClass.userBill;

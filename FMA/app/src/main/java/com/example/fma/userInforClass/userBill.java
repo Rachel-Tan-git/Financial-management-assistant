@@ -1,7 +1,6 @@
 package com.example.fma.userInforClass;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 /***
  * The userBill class is used to store the bill information and is easy to store directly into the database

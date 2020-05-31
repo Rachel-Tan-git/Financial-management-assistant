@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
                         uService.register(user);
                         //back to the login screen
                         startActivity(new Intent(RegisterActivity.this,MainActivity.class));
-                        Toast.makeText(RegisterActivity.this, "Register successfully! Please use the back button to Login", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegisterActivity.this, "Register successfully!", Toast.LENGTH_LONG).show();
                     }
                 }
             }
