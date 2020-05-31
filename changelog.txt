@@ -39,3 +39,11 @@ Xinghao Li: Developed the ability to generate PDF to store all bill records of u
 
 	          The changed files: misc.xml; aboutMeFragment.java; fragment_about_me.xml; AndroidManifest.xml;  fragment_show_records.xml; welcomeActivity.java; RecyclerAdapter.java; DatabaseHelper.java; UserService.java; showRecordDetailActivity.java; userBill.java; activity_show_record_detail.xml; fragment_add_record.xml.
 
+Week11：
+Chenchen Tan: Create a echarts.min.js file from the open source web site for show the bar charts. Add the function in the UserService and the action in echartsFragment.java to get the data for build the html file and show the charts. Add google-services.json into the project and connect the app to the firebase. Add a input test in chartsFragment, and improve the layout of the app. Add a TextView in the RecyclerView item. Update the layout of chartsFragment, and the print function. 
+
+	          The changed files: misc.xml; echarts.html; echarts.min.js; MainPageActivity.java; UserService.java; echartsFragment.java; fragment_echarts.xml; bottom_nav_menu.xml; build.gradle; google-services.json; gradle-wrapper.properties; fragment_show_records.xml; strings.xml; RecyclerAdapter.java; record_item.xml; aboutMeFragment.java
+
+Xinghao Li: Add echarts.html to connect with echarts.js and add fragment to show the charts. Complete the function of sending notifications to the app using firebase. Optimized PDF file output results. Add function to remember the username and password.
+
+	          The changed files: echarts.html; echartsFragment.java; fragment_echarts.xml; misc.xml; AndroidManifest.xml; MyFirebaseMessagingService.java; record_item.xml; MainActivity.java; activity_main.xml
