@@ -1,0 +1,7 @@
+aboutme: https://www.iconfont.cn/
+chart: https://www.iconfont.cn/
+edit: https://www.iconfont.cn/
+homepage: https://www.iconfont.cn/
+printer: https://www.iconfont.cn/
+coin: https://www.iconfont.cn/
+pig: https://www.iconfont.cn/
