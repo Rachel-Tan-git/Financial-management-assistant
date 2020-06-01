@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "734256251488",
+    "firebase_url": "https://fma-notification.firebaseio.com",
+    "project_id": "fma-notification",
+    "storage_bucket": "fma-notification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734256251488:android:c20b524d49fd7f54adf905",
+        "android_client_info": {
+          "package_name": "com.example.fma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734256251488-hhr1p206k4buncv1q5jg13qg1benbliu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fma",
+            "certificate_hash": "4a747594f4dc58e48eb2e87217736191e2d21f53"
+          }
+        },
+        {
+          "client_id": "734256251488-acmo3m9rf71h20q4up889a9g1scj6ts9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqE8rz3Ro93-8EeX2rwig0TeYptxkOYHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734256251488-acmo3m9rf71h20q4up889a9g1scj6ts9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

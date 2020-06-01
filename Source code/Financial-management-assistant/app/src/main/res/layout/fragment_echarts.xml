@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".echartsFragment">
+
+    <Button
+        android:id="@+id/chartSearch"
+        android:layout_width="96dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="24dp"
+        android:text="@android:string/search_go"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keySearch" />
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="410dp"
+        android:layout_height="552dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="23dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="TO"
+        app:layout_constraintEnd_toStartOf="@+id/endDate"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/startDate"
+        android:layout_width="135dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:ems="10"
+        android:hint="@string/begin_date_hint"
+        android:inputType="date"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView16"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/endDate"
+        android:layout_width="135dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="@string/end_date_hint"
+        android:inputType="date"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/chartSearch"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/charts_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,10 @@
-aboutme: https://www.iconfont.cn/
-chart: https://www.iconfont.cn/
-edit: https://www.iconfont.cn/
-homepage: https://www.iconfont.cn/
-printer: https://www.iconfont.cn/
-coin: https://www.iconfont.cn/
-pig: https://www.iconfont.cn/
+aboutme.png: https://www.iconfont.cn/
+chart.png: https://www.iconfont.cn/
+edit.png: https://www.iconfont.cn/
+homepage.png: https://www.iconfont.cn/
+printer.png: https://www.iconfont.cn/
+coin.png: https://www.iconfont.cn/
+pig.png: https://www.iconfont.cn/
+android.png：Android studio IDE internal resources
+feedback.png: Android studio IDE internal resources
+echarts.min.js https://echarts.apache.org/zh/builder.html

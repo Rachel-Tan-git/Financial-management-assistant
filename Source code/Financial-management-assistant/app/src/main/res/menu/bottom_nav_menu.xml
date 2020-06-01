@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/homepage"
+        android:title="MainPage" />
+    <item
+        android:id="@+id/charts"
+        android:icon="@drawable/charts"
+        android:title="Charts" />
+    <item
+        android:id="@+id/edit"
+        android:icon="@drawable/edit"
+        android:title="AddRecords" />
+    <item
+        android:id="@+id/aboutMe"
+        android:icon="@drawable/aboutme"
+        android:title="AboutMe" />
+
+</menu>
